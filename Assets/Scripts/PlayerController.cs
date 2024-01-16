@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public Transform spawnPoint; // Точка, откуда будут выпускаться пули
     public Transform cameraRotationPoint;
     public Transform gunTransform;
+    public Shooter shooter;
 
     private bool isGrounded;
     private bool isCrouching;
@@ -52,11 +53,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            StartShooting();
+            shooter.StartShooting();
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            StopShooting();
+            shooter.StopShooting();
         }
 
         if (isGrounded && Input.GetButtonDown("Jump") && jumpCount < jumps)
@@ -81,36 +82,6 @@ public class PlayerController : MonoBehaviour
         lookMove();
     }
 
-    private void StartShooting()
-    {
-        if (!isShooting)
-        {
-            isShooting = true;
-            StartCoroutine(ShootCoroutine());
-        }
-    }
-
-    private void StopShooting()
-    {
-        if (isShooting)
-        {
-            isShooting = false;
-            StopCoroutine(ShootCoroutine());
-        }
-    }
-
-    private IEnumerator ShootCoroutine()
-    {
-        while (isShooting)
-        {
-            Shoot();
-
-            // Ждем соответствующий интервал времени перед следующим выстрелом
-            yield return new WaitForSeconds(1f / fireRate);
-        }
-    }
-
-
     void MovePlayer(Vector3 moveDirection, float speed)
     {
         // Переводим вектор из локальных координат в глобальные
@@ -132,18 +103,6 @@ public class PlayerController : MonoBehaviour
     void StandUp()
     {
         isCrouching = false;
-    }
-
-    void Shoot()
-    {
-        // Создаем новый экземпляр пули из префаба
-        GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
-
-        // Получаем направление взгляда игрока
-        Vector3 lookDirection = Camera.main.transform.forward;
-
-        // Поворачиваем пулю в направлении взгляда игрока
-        bullet.transform.forward = lookDirection;
     }
 
     void lookMove()

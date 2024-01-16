@@ -354,6 +354,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1636337792}
   cameraRotationPoint: {fileID: 1123822079}
   gunTransform: {fileID: 1020272317}
+  shooter: {fileID: 1020272318}
 --- !u!54 &120549087
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -597,6 +598,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1020272317}
+  - component: {fileID: 1020272318}
+  - component: {fileID: 1020272319}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -621,6 +624,36 @@ Transform:
   - {fileID: 1636337792}
   m_Father: {fileID: 120549085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1020272318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020272316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ec28458f7550e4a8bd480e9bed3c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 1
+  bulletPrefab: {fileID: 5210022679408623496, guid: 0e6795ff212a89e40a05c1e2b5671152, type: 3}
+  spawnPoint: {fileID: 1636337792}
+  recoil: {fileID: 1020272319}
+--- !u!114 &1020272319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020272316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fda42fd1b0ed5144a41caedd8a0e99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilForce: 1
+  recoilSpeed: 5
 --- !u!1 &1101095330
 GameObject:
   m_ObjectHideFlags: 0

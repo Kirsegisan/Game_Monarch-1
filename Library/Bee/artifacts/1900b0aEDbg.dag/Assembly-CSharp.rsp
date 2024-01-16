@@ -359,6 +359,8 @@
 -analyzer:"D:/Unity/2022.3.11f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/Bullet.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/Recoil.cs"
+"Assets/Scripts/Shooter.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
