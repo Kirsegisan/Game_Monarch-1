@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
+        playerRigidbody.freezeRotation = true;//Физика не может крутить персонажа
+        //Скываю курсор
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()

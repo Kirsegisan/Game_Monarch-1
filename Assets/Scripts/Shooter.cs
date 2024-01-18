@@ -1,27 +1,62 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
+    public bool canShoot = true;
     public float fireRate = 1f;
     public float recoilSpeed = 2f;
     public GameObject bulletPrefab;
     public Transform spawnPoint;
     public Recoil recoil;
+    //Реализация стрельбы очередями
+    public float countBulletInBurst = 5;
+    public float countBulletInBurstNow;
+    public float timeBetweenShoot = 0.1f;
+    public float angleTimeBetweenShoot = 0;
+    public float timeBetweenBurst = 1;
+    public float angleTimeBetweenBurst = 0;
+    public float hitCoefficient = 6;//коэффициент в формуле расчета разброса (чем больше, тем точнее выстрел)
 
-    private bool isShooting;
+    public bool isShooting;
 
     private void Start()
     {
         isShooting = false;
+        countBulletInBurstNow = countBulletInBurst;
+         
     }
+
+
+    private void Update()
+    {
+        Debug.Log(Camera.main.transform.forward);
+        angleTimeBetweenShoot += Time.deltaTime;
+        angleTimeBetweenBurst += Time.deltaTime;
+        
+        if (angleTimeBetweenBurst >= timeBetweenBurst && angleTimeBetweenShoot >= timeBetweenShoot)
+        {
+            canShoot = true;
+            if(countBulletInBurstNow == 0)
+            { countBulletInBurstNow = countBulletInBurst; }
+            
+        }
+
+
+        if (isShooting)
+        {
+            Shoot();
+        }
+    }
+
 
     public void StartShooting()
     {
         if (!isShooting)
         {
             isShooting = true;
-            StartCoroutine(ShootCoroutine());
+            //StartCoroutine(ShootCoroutine());
         }
     }
 
@@ -29,25 +64,48 @@ public class Shooter : MonoBehaviour
     {
         if (isShooting)
         {
+            countBulletInBurstNow = 0;
+            angleTimeBetweenBurst = 0;
+            canShoot = false;
+
             isShooting = false;
-            StopCoroutine(ShootCoroutine());
+            //StopCoroutine(ShootCoroutine());
         }
     }
 
-    private IEnumerator ShootCoroutine()
+    /*private IEnumerator ShootCoroutine()
     {
         while (isShooting)
         {
             Shoot();
             yield return new WaitForSeconds(1f / fireRate);
         }
-    }
+    }*/
 
     private void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
-        Vector3 lookDirection = Camera.main.transform.forward;
-        bullet.transform.forward = lookDirection;
-        recoil.ApplyRecoil();
+        if (canShoot)
+        {
+            //Обнуление счетчиков
+            canShoot = false;
+            countBulletInBurstNow -= 1;
+            angleTimeBetweenShoot = 0;
+
+            if(countBulletInBurstNow <= 0) { angleTimeBetweenBurst = 0;}
+            
+
+            GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+            Vector3 lookDirection = Camera.main.transform.forward;
+            //Пользуясь особенностью задавания направления через вектор, задается небольшой случайный прирост
+            //Так же зависящий от количества сделанных выстрелов
+            lookDirection.z +=( UnityEngine.Random.Range(-1, 1) / (hitCoefficient + countBulletInBurstNow));
+            lookDirection.y +=( UnityEngine.Random.Range(-1, 1) / (hitCoefficient + countBulletInBurstNow));
+            lookDirection.x +=( UnityEngine.Random.Range(-1, 1) / (hitCoefficient + countBulletInBurstNow));
+            lookDirection.Normalize();
+            bullet.transform.forward = lookDirection;
+            
+            //recoil.ApplyRecoil();
+        }
     }
 }
+
