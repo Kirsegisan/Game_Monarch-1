@@ -98,9 +98,9 @@ public class Shooter : MonoBehaviour
             Vector3 lookDirection = Camera.main.transform.forward;
             //Пользуясь особенностью задавания направления через вектор, задается небольшой случайный прирост
             //Так же зависящий от количества сделанных выстрелов
-            lookDirection.z +=( UnityEngine.Random.Range(-1, 1) / (hitCoefficient + countBulletInBurstNow));
-            lookDirection.y +=( UnityEngine.Random.Range(-1, 1) / (hitCoefficient + countBulletInBurstNow));
-            lookDirection.x +=( UnityEngine.Random.Range(-1, 1) / (hitCoefficient + countBulletInBurstNow));
+            lookDirection.z += Convert.ToSingle(UnityEngine.Random.Range(-1, 1) / (hitCoefficient + countBulletInBurstNow) * Math.Sin(Math.PI / 2 * lookDirection.z));
+            lookDirection.y += Convert.ToSingle(UnityEngine.Random.Range(-1, 1) / (hitCoefficient + countBulletInBurstNow) * Math.Sin(Math.PI / 2 * lookDirection.y));
+            lookDirection.x += Convert.ToSingle(UnityEngine.Random.Range(-1, 1) / (hitCoefficient + countBulletInBurstNow) * Math.Sin(Math.PI / 2 * lookDirection.x));
             lookDirection.Normalize();
             bullet.transform.forward = lookDirection;
             
