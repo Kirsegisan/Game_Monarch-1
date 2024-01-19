@@ -31,7 +31,6 @@ public class Shooter : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(Camera.main.transform.forward);
         angleTimeBetweenShoot += Time.deltaTime;
         angleTimeBetweenBurst += Time.deltaTime;
         
