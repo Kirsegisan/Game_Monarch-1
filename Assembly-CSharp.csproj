@@ -63,7 +63,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
-    <Compile Include="Assets\Scripts\Recoil.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
@@ -777,17 +776,9 @@
       <Project>{2553112E-8F88-6D45-FF3C-CE078BAD1FE7}</Project>
       <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="NavMeshComponents.csproj">
-      <Project>{F51E881C-49E9-8DB6-BD16-BE29EE4125C9}</Project>
-      <Name>NavMeshComponents</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.Performance.Profile-Analyzer.Editor.csproj">
       <Project>{29F3B185-1DCC-3717-B805-493205D74AA3}</Project>
       <Name>Unity.Performance.Profile-Analyzer.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="NavMeshComponentsEditor.csproj">
-      <Project>{F923FF84-2F85-D273-3A51-7A6D40F286E8}</Project>
-      <Name>NavMeshComponentsEditor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TestTools.CodeCoverage.Editor.csproj">
       <Project>{FFF819C7-8742-531E-B098-9DF1F338FF0D}</Project>
@@ -797,9 +788,17 @@
       <Project>{96B1AA41-802D-ED68-3F7B-D8E76B8DBFA3}</Project>
       <Name>Unity.TestTools.CodeCoverage.Editor.OpenCover.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.AI.Navigation.csproj">
+      <Project>{5AD8BA52-A0AA-3052-D87C-F5E5FEF8EDC4}</Project>
+      <Name>Unity.AI.Navigation</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
       <Project>{3D548D56-C220-84B7-969D-5591822DBBAA}</Project>
       <Name>Unity.PlasticSCM.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.AI.Navigation.Updater.csproj">
+      <Project>{11B9B558-2F74-6B24-4DA9-4DB23EE104BE}</Project>
+      <Name>Unity.AI.Navigation.Updater</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj">
       <Project>{B3BA1C90-A4CE-F61C-434E-31757630516E}</Project>
@@ -841,6 +840,10 @@
       <Project>{2B8710CC-02CB-05F8-06AF-2C47C5B10C1E}</Project>
       <Name>Unity.Rider.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.AI.Navigation.Editor.csproj">
+      <Project>{8BE17A5F-D11E-2F85-3CC7-EA48DE143DB8}</Project>
+      <Name>Unity.AI.Navigation.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.State.csproj">
       <Project>{8637856D-4E00-45E1-2769-93CA12C752C7}</Project>
       <Name>Unity.VisualScripting.State</Name>
@@ -848,6 +851,10 @@
     <ProjectReference Include="Unity.VSCode.Editor.csproj">
       <Project>{26D08EED-6F38-107F-55A4-19B6CC33A586}</Project>
       <Name>Unity.VSCode.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.AI.Navigation.Editor.ConversionSystem.csproj">
+      <Project>{F43D8A7C-F0FE-781A-B143-CEA3A0E5A774}</Project>
+      <Name>Unity.AI.Navigation.Editor.ConversionSystem</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
       <Project>{A56B67D8-9612-5049-A0B7-55156006A9A2}</Project>

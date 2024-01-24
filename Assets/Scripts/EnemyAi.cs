@@ -1,104 +1,97 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAi : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
-    public NavMeshAgent agent;
-    public Transform player;
-    public Shooter shooter;
-    public LayerMask whatIsGround, whatIsPlayer;
-    public float health;
-    public float attackDistance;
+    public float patrolRadius = 10f;
+    public float chaseRadius = 20f;
+    public float shootingDistance = 15f;
+    public float patrolSpeed = 3.0f;
+    public float chaseSpeed = 5.0f;
+    public float rotationSpeed = 3.0f;
+    public float shootCooldown = 2.0f;
 
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
+    [SerializeField]
+    private Transform player;
+    [SerializeField]
+    private NavMeshAgent navMeshAgent;
+    [SerializeField]
+    private Shooter shooter;
+    private float timeSinceLastShot;
 
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
-    public GameObject projectile;
+    private Vector3 patrolPosition;
 
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
-
-    private void Update()
+    void Start()
     {
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        patrolPosition = GetRandomPatrolPosition();
+        timeSinceLastShot = shootCooldown;
     }
 
-    private void Patroling()
+    void Update()
     {
-        if (!walkPointSet) SearchWalkPoint();
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (walkPointSet)
-            agent.SetDestination(walkPoint);
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        if (distanceToWalkPoint.magnitude < 1f)
-            walkPointSet = false;
-    }
-    private void SearchWalkPoint()
-    {
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-            walkPointSet = true;
-    }
-
-    private void ChasePlayer()
-    {
-        agent.SetDestination(player.position);
-    }
-
-    private void AttackPlayer()
-    {
-        agent.SetDestination(transform.position);
-
-        transform.LookAt(player);
-
-        if (!alreadyAttacked)
+        if (distanceToPlayer < chaseRadius)
         {
-            ///Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            ///End of attack code
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            ChasePlayer();
+            if (distanceToPlayer < shootingDistance)
+            {
+                ShootAtPlayer();
+            }
+        }
+        else if (distanceToPlayer > patrolRadius)
+        {
+            ReturnToPatrol();
+        }
+        else
+        {
+            Patrol();
         }
     }
-    private void ResetAttack()
+
+    void Patrol()
     {
-        alreadyAttacked = false;
+        navMeshAgent.speed = patrolSpeed;
+
+        if (Vector3.Distance(transform.position, patrolPosition) < 1.0f)
+        {
+            patrolPosition = GetRandomPatrolPosition();
+        }
+
+        navMeshAgent.SetDestination(patrolPosition);
     }
 
-    public void TakeDamage(int damage)
+    void ReturnToPatrol()
     {
-        health -= damage;
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
+        shooter.StartShooting();
+        navMeshAgent.speed = patrolSpeed;
+        navMeshAgent.SetDestination(patrolPosition);
     }
 
-    private void OnDrawGizmosSelected()
+    void ChasePlayer()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
+        navMeshAgent.speed = chaseSpeed;
+        navMeshAgent.SetDestination(player.position);
+    }
+
+    void ShootAtPlayer()
+    {
+        timeSinceLastShot += Time.deltaTime;
+
+        if (timeSinceLastShot >= shootCooldown)
+        {
+            shooter.StartShooting();
+            timeSinceLastShot = 0f;
+        }
+    }
+
+    Vector3 GetRandomPatrolPosition()
+    {
+
+        Vector3 randomDirection = Random.insideUnitSphere * patrolRadius;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, patrolRadius, 1);
+        return hit.position;
     }
 }

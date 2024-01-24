@@ -9,7 +9,6 @@ public class Shooter : MonoBehaviour
     public float recoilSpeed = 2f;
     public GameObject bulletPrefab;
     public Transform spawnPoint;
-    public Recoil recoil;
     //Реализация стрельбы очередями
     public float countBulletInBurst = 5;
     public float countBulletInBurstNow;

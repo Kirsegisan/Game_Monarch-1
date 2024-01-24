@@ -63,7 +63,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
-    <Compile Include="Assets\Scripts\Recoil.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
@@ -705,9 +704,9 @@
       <Project>{CEC74A2A-8844-F066-CEEE-2160AF9F207E}</Project>
       <Name>UnityEngine.UI.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="NavMeshComponents.Player.csproj">
-      <Project>{80F054D7-0A4B-9920-9D07-03DE7049434D}</Project>
-      <Name>NavMeshComponents.Player</Name>
+    <ProjectReference Include="Unity.AI.Navigation.Player.csproj">
+      <Project>{58312338-0696-1539-BE66-A99CB5FA6BE4}</Project>
+      <Name>Unity.AI.Navigation.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Player.csproj">
       <Project>{4555AD1C-2732-44E6-BC33-54135717419E}</Project>
