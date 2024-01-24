@@ -63,7 +63,7 @@ public class EnemyAI : MonoBehaviour
 
     void ReturnToPatrol()
     {
-        shooter.StartShooting();
+        shooter.StopShooting();
         navMeshAgent.speed = patrolSpeed;
         navMeshAgent.SetDestination(patrolPosition);
     }

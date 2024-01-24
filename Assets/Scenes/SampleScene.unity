@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc89b6d540166d7439bf2d9154230139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  walkSpeed: 7
   crouchSpeed: 2
   jumpForce: 5
   crouchHeight: 0.5
@@ -1257,7 +1257,7 @@ MonoBehaviour:
   chaseRadius: 20
   shootingDistance: 8
   patrolSpeed: 3
-  chaseSpeed: 5
+  chaseSpeed: 3
   rotationSpeed: 3
   shootCooldown: 2
   player: {fileID: 120549085}
@@ -1273,7 +1273,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

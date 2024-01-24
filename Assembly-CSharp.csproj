@@ -848,13 +848,13 @@
       <Project>{8637856D-4E00-45E1-2769-93CA12C752C7}</Project>
       <Name>Unity.VisualScripting.State</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.VSCode.Editor.csproj">
-      <Project>{26D08EED-6F38-107F-55A4-19B6CC33A586}</Project>
-      <Name>Unity.VSCode.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.AI.Navigation.Editor.ConversionSystem.csproj">
       <Project>{F43D8A7C-F0FE-781A-B143-CEA3A0E5A774}</Project>
       <Name>Unity.AI.Navigation.Editor.ConversionSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VSCode.Editor.csproj">
+      <Project>{26D08EED-6F38-107F-55A4-19B6CC33A586}</Project>
+      <Name>Unity.VSCode.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
       <Project>{A56B67D8-9612-5049-A0B7-55156006A9A2}</Project>
