@@ -2,6 +2,7 @@ Base path: 'C:/Program Files/Unity/Hub/Editor/2022.3.2f1/Editor/Data', plugins p
 Cmd: initializeCompiler
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Cmd: shutdown
 =======
 <<<<<<< HEAD
@@ -432,3 +433,5 @@ Cmd: compileSnippet
 Cmd: shutdown
 >>>>>>> b8990a305a1fba1bf085da159c3f179baf6ea496
 >>>>>>> parent of 0ef73a71 (never minde)
+=======
+>>>>>>> parent of d95d9857 (Never minde)
