@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     public bool canShoot = true;
+    public bool infinitAmmo = true;
     public float fireRate = 1f;
     public float recoilSpeed = 2f;
     public GameObject bulletPrefab;
@@ -17,6 +18,7 @@ public class Shooter : MonoBehaviour
     public float timeBetweenBurst = 1;
     public float angleTimeBetweenBurst = 0;
     public float hitCoefficient = 6;//коэффициент в формуле расчета разброса (чем больше, тем точнее выстрел)
+    public int fireMode = 0;
 
     public bool isShooting;
 
@@ -41,17 +43,29 @@ public class Shooter : MonoBehaviour
             
         }
 
+        if (!infinitAmmo)
+        {
+            if (GlobalVariables.cBulletsAmount < 1)
+            {
+                canShoot = false;
+            }
+            else
+            {
+                canShoot = true;
+            }
+        }
 
         if (isShooting)
         {
-            Shoot();
+                Shoot();
         }
+        
     }
 
 
     public void StartShooting()
     {
-        if (!isShooting)
+        if (!isShooting & canShoot)
         {
             isShooting = true;
             //StartCoroutine(ShootCoroutine());
@@ -87,6 +101,10 @@ public class Shooter : MonoBehaviour
             //Обнуление счетчиков
             canShoot = false;
             countBulletInBurstNow -= 1;
+            if (!infinitAmmo)
+            {
+                GlobalVariables.cBulletsAmount -= 1;
+            }
             angleTimeBetweenShoot = 0;
 
             if(countBulletInBurstNow <= 0) { angleTimeBetweenBurst = 0;}

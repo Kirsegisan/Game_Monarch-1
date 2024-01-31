@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - Exterior
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Pickables
   - Water
   - UI
   - 
