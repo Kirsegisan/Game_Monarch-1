@@ -572,6 +572,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &545564108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545564105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dbd63feed1107b40afaefb1c7bf7fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_AgentTypeID: 0
   m_CollectObjects: 0
   m_Size: {x: 10, y: 10, z: 10}
@@ -581,16 +593,14 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_UseGeometry: 0
   m_DefaultArea: 0
-  m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 98322b7eec8a3b84cacf27d36d0da0d8, type: 2}
   m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 23800000, guid: 7523523e40216e04e800d6202437bbfb, type: 2}
 --- !u!1 &697002525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,6 +2002,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9f0e905059ae7eb4fb653897c2aa1209, type: 3}
       insertIndex: -1
       addedObject: {fileID: 545564106}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9f0e905059ae7eb4fb653897c2aa1209, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 545564108}
     - targetCorrespondingSourceObject: {fileID: 6443852219947562045, guid: 9f0e905059ae7eb4fb653897c2aa1209, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1591603148}
