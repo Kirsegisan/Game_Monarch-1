@@ -41,7 +41,11 @@ The following packages were updated:
   com.unity.timeline from version 1.6.2 to 1.7.5
   com.unity.visualscripting from version 1.7.6 to 1.9.1
 
+<<<<<<< HEAD
 === Sun Jan 28 10:19:34 2024
+=======
+=== Sun Jan 28 13:32:16 2024
+>>>>>>> d95d9857c40d3e17e1503c32d01fe76571299c3a
 
 Packages were changed.
 Update Mode: updateDependencies
