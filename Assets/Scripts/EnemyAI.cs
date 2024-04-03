@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,19 +9,21 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
 
-    // Параметры патрулирования
+    // ГЏГ Г°Г Г¬ГҐГІГ°Г» ГЇГ ГІГ°ГіГ«ГЁГ°Г®ГўГ Г­ГЁГї
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
-    // Параметры атаки
+    // ГЏГ Г°Г Г¬ГҐГІГ°Г» Г ГІГ ГЄГЁ
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
 
-    // Состояния
+    // Г‘Г®Г±ГІГ®ГїГ­ГЁГї
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+
+    [SerializeField] private Transform firePoint;
 
     private void Awake()
     {
@@ -31,7 +33,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        // Проверка на видимость и дистанцию атаки
+        // ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГўГЁГ¤ГЁГ¬Г®Г±ГІГј ГЁ Г¤ГЁГ±ГІГ Г­Г¶ГЁГѕ Г ГІГ ГЄГЁ
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -49,14 +51,14 @@ public class EnemyAI : MonoBehaviour
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-        // Достижение точки
+        // Г„Г®Г±ГІГЁГ¦ГҐГ­ГЁГҐ ГІГ®Г·ГЄГЁ
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
     }
 
     private void SearchWalkPoint()
     {
-        // Генерация случайной точки для патрулирования
+        // ГѓГҐГ­ГҐГ°Г Г¶ГЁГї Г±Г«ГіГ·Г Г©Г­Г®Г© ГІГ®Г·ГЄГЁ Г¤Г«Гї ГЇГ ГІГ°ГіГ«ГЁГ°Г®ГўГ Г­ГЁГї
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
@@ -73,15 +75,15 @@ public class EnemyAI : MonoBehaviour
 
     private void AttackPlayer()
     {
-        // Убедитесь, что враг не двигается
+        // Г“ГЎГҐГ¤ГЁГІГҐГ±Гј, Г·ГІГ® ГўГ°Г ГЈ Г­ГҐ Г¤ГўГЁГЈГ ГҐГІГ±Гї
         agent.SetDestination(transform.position);
 
         transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
-            // Код атаки, например, выстрел
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            // ГЉГ®Г¤ Г ГІГ ГЄГЁ, Г­Г ГЇГ°ГЁГ¬ГҐГ°, ГўГ»Г±ГІГ°ГҐГ«
+            Rigidbody rb = Instantiate(projectile, firePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             rb.AddForce(transform.up * 8f, ForceMode.Impulse);
             alreadyAttacked = true;

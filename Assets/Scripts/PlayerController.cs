@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,9 +27,14 @@ public class PlayerController : MonoBehaviour
     public float fireRate = 0.5f;
     private float nextFireTime = 0f;
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     void Update()
     {
-        // Проверка нахождения на земле
+        // ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г ГµГ®Г¦Г¤ГҐГ­ГЁГї Г­Г  Г§ГҐГ¬Г«ГҐ
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)
@@ -37,27 +42,27 @@ public class PlayerController : MonoBehaviour
             velocity.y = -2f;
         }
 
-        // Управление движением
+        // Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ Г¤ГўГЁГ¦ГҐГ­ГЁГҐГ¬
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
 
-        // Управление прыжком
+        // Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ ГЇГ°Г»Г¦ГЄГ®Г¬
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
-        // Управление стрельбой
-        // Переключение режима стрельбы
-        if (Input.GetKeyDown(KeyCode.F)) // F - кнопка для переключения
+        // Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ Г±ГІГ°ГҐГ«ГјГЎГ®Г©
+        // ГЏГҐГ°ГҐГЄГ«ГѕГ·ГҐГ­ГЁГҐ Г°ГҐГ¦ГЁГ¬Г  Г±ГІГ°ГҐГ«ГјГЎГ»
+        if (Input.GetKeyDown(KeyCode.F)) // F - ГЄГ­Г®ГЇГЄГ  Г¤Г«Гї ГЇГҐГ°ГҐГЄГ«ГѕГ·ГҐГ­ГЁГї
         {
             isAutoFiring = !isAutoFiring;
         }
 
-        // Автоогонь
+        // ГЂГўГІГ®Г®ГЈГ®Г­Гј
         if (isAutoFiring && Time.time >= nextFireTime && Input.GetButton("Fire1"))
         {
             shooter.Fire();
@@ -68,11 +73,11 @@ public class PlayerController : MonoBehaviour
             shooter.Fire();
         }
 
-        // Управление гравитацией
+        // Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ ГЈГ°Г ГўГЁГІГ Г¶ГЁГҐГ©
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        // Управление камерой
+        // Г“ГЇГ°Г ГўГ«ГҐГ­ГЁГҐ ГЄГ Г¬ГҐГ°Г®Г©
         rotX += -Input.GetAxis("Mouse Y") * lookSensitivity;
         rotX = Mathf.Clamp(rotX, minLookX, maxLookX);
         playerCamera.transform.localRotation = Quaternion.Euler(rotX, 0, 0);

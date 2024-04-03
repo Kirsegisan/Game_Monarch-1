@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,11 +11,11 @@ public class Shooter : MonoBehaviour
 
     public void Fire()
     {
-        // Создание пули
+        // Г‘Г®Г§Г¤Г Г­ГЁГҐ ГЇГіГ«ГЁ
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
-        // Добавление разброса
+        // Г„Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ Г°Г Г§ГЎГ°Г®Г±Г 
         Vector3 spreadVector = new Vector3(
             Random.Range(-spread, spread),
             Random.Range(-spread, spread),
@@ -24,7 +24,7 @@ public class Shooter : MonoBehaviour
 
         if (rb != null)
         {
-            // Применение силы
+            // ГЏГ°ГЁГ¬ГҐГ­ГҐГ­ГЁГҐ Г±ГЁГ«Г»
             rb.AddForce(-firePoint.right * bulletForce + spreadVector, ForceMode.Impulse);
         }
         else

@@ -151,9 +151,10 @@ GameObject:
   - component: {fileID: 1448776762974953090}
   - component: {fileID: 8080390065016415859}
   - component: {fileID: 2636901731518023625}
+  - component: {fileID: 7843913024003179225}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,6 +259,24 @@ MonoBehaviour:
   shooter: {fileID: 1033068677190758298}
   isAutoFiring: 0
   fireRate: 0.5
+--- !u!114 &7843913024003179225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2722439493213706027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42aabfd519e68b4bbef412ad08c2f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullets: 100
+  infiniteAmmo: 1
+  currentHealth: 100
+  maxHealth: 100
+  isDead: 0
+  isPlayer: 1
 --- !u!1 &3752963637390857297
 GameObject:
   m_ObjectHideFlags: 0
