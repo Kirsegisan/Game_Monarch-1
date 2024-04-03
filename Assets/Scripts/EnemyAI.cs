@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
+    [SerializeField] private float projectileSpeed = 1f;
 
     // Ñîñòîÿíèÿ
     public float sightRange, attackRange;
@@ -75,21 +76,21 @@ public class EnemyAI : MonoBehaviour
 
     private void AttackPlayer()
     {
-        // Óáåäèòåñü, ÷òî âðàã íå äâèãàåòñÿ
         agent.SetDestination(transform.position);
 
         transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
-            // Êîä àòàêè, íàïðèìåð, âûñòðåë
+            Vector3 attackDirection = (player.position - firePoint.position).normalized;
+
             Rigidbody rb = Instantiate(projectile, firePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            rb.velocity = attackDirection * projectileSpeed;
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+
 
     private void ResetAttack()
     {
