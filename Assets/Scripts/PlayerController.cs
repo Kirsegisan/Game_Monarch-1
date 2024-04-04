@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
-    public Camera playerCamera;
+    public Camera[] playerCameras; // Массив камер
     public float lookSensitivity = 2f;
     public float maxLookX = 45f;
     public float minLookX = -45f;
@@ -27,13 +27,21 @@ public class PlayerController : MonoBehaviour
     public float fireRate = 0.5f;
     private float nextFireTime = 0f;
 
+    [SerializeField] PlayerData playerData;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        playerData.health = playerData.maxHealth;
     }
 
     void Update()
     {
+        if (playerData.health <= 0)
+        {
+            //Смерть
+        }
+
         // Ïðîâåðêà íàõîæäåíèÿ íà çåìëå
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -77,10 +85,13 @@ public class PlayerController : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        // Óïðàâëåíèå êàìåðîé
-        rotX += -Input.GetAxis("Mouse Y") * lookSensitivity;
-        rotX = Mathf.Clamp(rotX, minLookX, maxLookX);
-        playerCamera.transform.localRotation = Quaternion.Euler(rotX, 0, 0);
-        transform.eulerAngles += Vector3.up * Input.GetAxis("Mouse X") * lookSensitivity;
+        // Óïðàâëåíèå êàìåðîé для каждой камеры в массиве
+        foreach (Camera cam in playerCameras)
+        {
+            rotX += -Input.GetAxis("Mouse Y") * lookSensitivity;
+            rotX = Mathf.Clamp(rotX, minLookX, maxLookX);
+            cam.transform.localRotation = Quaternion.Euler(rotX, 0, 0);
+            transform.eulerAngles += Vector3.up * Input.GetAxis("Mouse X") * lookSensitivity;
+        }
     }
 }

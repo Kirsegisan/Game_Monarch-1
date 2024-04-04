@@ -373,6 +373,7 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.22f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/Bullet.cs"
+"Assets/Scripts/Door.cs"
 "Assets/Scripts/EnemyAI.cs"
 "Assets/Scripts/HealthBar.cs"
 "Assets/Scripts/ObjectData.cs"
@@ -381,7 +382,9 @@
 "Assets/Scripts/PickableWeapon.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/PlayerData.cs"
+"Assets/Scripts/SceneLoader.cs"
 "Assets/Scripts/Shooter.cs"
+"Assets/Scripts/WeaponSwitch.cs"
 -langversion:9.0
 
 /deterministic
