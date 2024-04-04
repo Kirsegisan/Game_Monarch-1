@@ -378,6 +378,7 @@
 "Assets/Scripts/ObjectData.cs"
 "Assets/Scripts/Pickable.cs"
 "Assets/Scripts/PickableUI.cs"
+"Assets/Scripts/PickableWeapon.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/PlayerData.cs"
 "Assets/Scripts/Shooter.cs"
