@@ -3,10 +3,10 @@
 
 # Except for ProjectSettings directory
 !.gitignore
-!ProjectSettings/
+!/ProjectSettings/
 
 # Except for Assets directory
-!Assets/
+!/Assets/
 
 # Except for Packages directory
-!Packages/
+!/Packages/
