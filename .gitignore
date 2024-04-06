@@ -1,0 +1,12 @@
+# Ignore all files and directories
+/*
+
+# Except for ProjectSettings directory
+!/.gitignore
+!/ProjectSettings/
+
+# Except for Assets directory
+!/Assets/
+
+# Except for Packages directory
+!/Packages/
