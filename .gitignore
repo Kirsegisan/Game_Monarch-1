@@ -1,12 +1,12 @@
-# Ignore all files and directories
-*
+/*
+/*/
 
-# Except for ProjectSettings directory
+# Git meta files
 !.gitignore
-!ProjectSettings/*
+!.gitattributes
+!README.md
 
-# Except for Assets directory
-!Assets/*
-
-# Except for Packages directory
-!Packages/*
+# Whitelisted directories/files
+!/ProjectSettings/
+!/Assets/ 
+!/Packages/ 
