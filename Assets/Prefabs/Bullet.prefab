@@ -212,7 +212,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5778172370482098698}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -245,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   playerData: {fileID: 11400000, guid: 37747a04e539e8440b0169687d3fd552, type: 2}
+  destructionDelay: 20
 --- !u!1 &7307334197519514524
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,6 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1804064944018545064}
   - component: {fileID: 2818263333832757494}
+  - component: {fileID: 8549735303751783385}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -294,7 +296,28 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.08
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &8549735303751783385
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7307334197519514524}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 0.1, z: 0.1}
+  m_Center: {x: 5, y: 0, z: 0}

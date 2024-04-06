@@ -25,7 +25,7 @@ public class Shooter : MonoBehaviour
         if (rb != null)
         {
             // Ïðèìåíåíèå ñèëû
-            rb.AddForce(-firePoint.right * bulletForce + spreadVector, ForceMode.Impulse);
+            rb.AddForce(firePoint.forward * bulletForce + spreadVector, ForceMode.Impulse);
         }
         else
         {
