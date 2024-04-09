@@ -27,12 +27,16 @@ public class PlayerController : MonoBehaviour
     public float fireRate = 0.5f;
     private float nextFireTime = 0f;
 
+    private Animator handAnimator;
+
     [SerializeField] PlayerData playerData;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         playerData.health = playerData.maxHealth;
+
+        handAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -56,6 +60,8 @@ public class PlayerController : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
+        if (z != 0 || x != 0) { handAnimator.SetBool("isRunning", true); }
+        else { handAnimator.SetBool("isRunning", false); }
 
         // Óïðàâëåíèå ïðûæêîì
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -74,11 +80,13 @@ public class PlayerController : MonoBehaviour
         if (isAutoFiring && Time.time >= nextFireTime && Input.GetButton("Fire1"))
         {
             shooter.Fire();
+            handAnimator.SetBool("shoot", true);
             nextFireTime = Time.time + 1f / fireRate;
         }
         else if (Input.GetButtonDown("Fire1") && !isAutoFiring)
         {
             shooter.Fire();
+            handAnimator.SetBool("shoot", true);
         }
 
         // Óïðàâëåíèå ãðàâèòàöèåé
