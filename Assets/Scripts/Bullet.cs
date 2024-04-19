@@ -15,6 +15,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.gameObject.name);
         Transform parent = other.transform.parent;
         if (parent)
         {

@@ -28,8 +28,10 @@ public class PlayerController : MonoBehaviour
     private float nextFireTime = 0f;
 
     private Animator handAnimator;
+    private AudioSource ShootSound;
 
     [SerializeField] PlayerData playerData;
+
 
     private void Start()
     {
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         playerData.health = playerData.maxHealth;
 
         handAnimator = GetComponent<Animator>();
+        ShootSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -80,6 +83,7 @@ public class PlayerController : MonoBehaviour
         if (isAutoFiring && Time.time >= nextFireTime && Input.GetButton("Fire1"))
         {
             shooter.Fire();
+            ShootSound.Play();
             handAnimator.SetBool("shoot", true);
             nextFireTime = Time.time + 1f / fireRate;
         }
