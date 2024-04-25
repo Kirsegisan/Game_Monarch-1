@@ -65,8 +65,8 @@ ModelImporter:
       name: idle
       takeName: metarig.001|metarig.002|Idle|Anima_Layer
       internalID: 2201363619763143597
-      firstFrame: 0
-      lastFrame: 60
+      firstFrame: 3
+      lastFrame: 58
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -123,7 +123,7 @@ ModelImporter:
       name: shoot
       takeName: metarig.001|metarig.002|Shooting|Anima_Layer
       internalID: 1162129223757602970
-      firstFrame: 0
+      firstFrame: 2
       lastFrame: 8
       wrapMode: 0
       orientationOffsetY: 0
