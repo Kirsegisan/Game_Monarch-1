@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 1461187920999414322}
   - component: {fileID: 1613559471096708165}
   - component: {fileID: 4924260239413238098}
+  - component: {fileID: 764809963074608123}
   m_Layer: 0
   m_Name: EnemyT-type
   m_TagString: Enemy
@@ -364,6 +365,9 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   firePoint: {fileID: 6206373332845805679}
+  attackCollider: {fileID: 764809963074608123}
+  stepToAttack: 1
+  attackDastans: 20
 --- !u!114 &1613559471096708165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +384,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   objectData: {fileID: 4924260239413238098}
+  playerData: {fileID: 0}
 --- !u!114 &4924260239413238098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +403,27 @@ MonoBehaviour:
   maxHealth: 100
   isDead: 0
   isPlayer: 0
+--- !u!135 &764809963074608123
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032917157227003910}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5603425000173613450
 GameObject:
   m_ObjectHideFlags: 0

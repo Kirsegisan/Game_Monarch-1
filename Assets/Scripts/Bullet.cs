@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] public float damage = 10f;
+    [SerializeField] private float damage = 10f;
     [SerializeField] private PlayerData playerData;
     [SerializeField] private float destructionDelay = 5f; // Задержка перед уничтожением пули
 
@@ -12,6 +12,9 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject, destructionDelay); // Уничтожение пули через указанное время
     }
+
+    public float getDamage() { return damage; }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,7 +38,7 @@ public class Bullet : MonoBehaviour
             if (parent.CompareTag("Player"))
             {
 
-                playerData.health -= damage;
+                other.GetComponent<PlayerController>().HealingAndDamage(damage, 0);
 
                 if (playerData.health <= 0)
                 {

@@ -25,6 +25,12 @@ public class EnemyAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
     [SerializeField] private Transform firePoint;
+    [SerializeField] private SphereCollider attackCollider;
+
+    [SerializeField] private float stepToAttack;
+    private float minToAttack = 0.1f;
+    private bool isAttack = false;
+    [SerializeField] private float attackDastans;
 
     private void Awake()
     {
@@ -41,6 +47,14 @@ public class EnemyAI : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
+
+
+        //счетчик атаки
+        if (isAttack)
+        {
+            attackCollider.radius += stepToAttack * Time.deltaTime;
+            if (attackCollider.radius > attackDastans) { isAttack = false; attackCollider.radius = minToAttack; }
+        }
     }
 
     private void Patrolling()
@@ -82,10 +96,11 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            Vector3 attackDirection = (player.position - firePoint.position).normalized;
+            isAttack = true;
+           /* Vector3 attackDirection = (player.position - firePoint.position).normalized;
 
             Rigidbody rb = Instantiate(projectile, firePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.velocity = attackDirection * projectileSpeed;
+            rb.velocity = attackDirection * projectileSpeed;*/
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
@@ -96,4 +111,10 @@ public class EnemyAI : MonoBehaviour
     {
         alreadyAttacked = false;
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        
+    }
+
 }

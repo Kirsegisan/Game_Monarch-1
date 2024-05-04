@@ -23,12 +23,16 @@ public class PlayerController : MonoBehaviour
     private float rotX;
 
     public Shooter shooter;
+    private bool canHealing = true;
+    [SerializeField] private float healingCooldown; // Кулдаун хилки в секундах
+    private float angleHealingCooldown = 0;
     public bool isAutoFiring = false;
     public float fireRate = 0.5f;
     private float nextFireTime = 0f;
 
     private Animator handAnimator;
     private AudioSource ShootSound;
+    [SerializeField] private float heal;
 
     [SerializeField] PlayerData playerData;
 
@@ -38,15 +42,35 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         playerData.health = playerData.maxHealth;
 
+
         handAnimator = GetComponent<Animator>();
         ShootSound = GetComponent<AudioSource>();
     }
 
+    public void HealingAndDamage(float damage, float heal)
+    {
+        playerData.health -= damage - heal;
+    }
+
+
     void Update()
     {
+        // счетчики кулдауна
+        if (!canHealing) { angleHealingCooldown -= Time.deltaTime;
+            HealingAndDamage(0, heal * angleHealingCooldown * angleHealingCooldown);
+            if (angleHealingCooldown <= 0) { canHealing = true; } }
+
+
+
+        // такты лечения
+
+
+
+        // ну и все остальное
+
         if (playerData.health <= 0)
         {
-            //Смерть
+            gameObject.SetActive(false);
         }
 
         // Ïðîâåðêà íàõîæäåíèÿ íà çåìëå
@@ -78,6 +102,21 @@ public class PlayerController : MonoBehaviour
         {
             isAutoFiring = !isAutoFiring;
         }
+
+
+        if (Input.GetKeyDown(KeyCode.H) && canHealing)
+        {
+            handAnimator.SetBool("Healing", true);
+            canHealing = false; angleHealingCooldown = healingCooldown;
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.F) && Input.GetKeyDown(KeyCode.U)&&
+            Input.GetKeyDown(KeyCode.C) && Input.GetKeyDown(KeyCode.K))
+        {
+            HealingAndDamage(playerData.health - 1, 0);
+        }
+
 
         // Àâòîîãîíü
         if (isAutoFiring && Time.time >= nextFireTime && Input.GetButton("Fire1"))
