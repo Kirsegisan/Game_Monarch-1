@@ -367,8 +367,10 @@ MonoBehaviour:
   maxLookX: 45
   minLookX: -45
   shooter: {fileID: 0}
+  healingCooldown: 0
   isAutoFiring: 0
   fireRate: 0.5
+  heal: 0
   playerData: {fileID: 11400000, guid: 37747a04e539e8440b0169687d3fd552, type: 2}
 --- !u!114 &2153191304061474316
 MonoBehaviour:
@@ -1213,7 +1215,7 @@ Transform:
   m_GameObject: {fileID: 7098290357383508075}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.447, z: 2.257}
+  m_LocalPosition: {x: -0, y: 0.45, z: 1.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

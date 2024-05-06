@@ -11,21 +11,25 @@ public class Shooter : MonoBehaviour
 
     public void Fire()
     {
-        // Ñîçäàíèå ïóëè
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Ray ray = new Ray(firePoint.position, firePoint.forward);
+
+        Vector3 bulletStartPosition = firePoint.position;
+        Vector3 bulletDirection = firePoint.forward;
+
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            bulletStartPosition = hit.point;
+            bulletDirection = (hit.point - firePoint.position).normalized;
+        }
+
+        GameObject bullet = Instantiate(bulletPrefab, bulletStartPosition, Quaternion.identity);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
-        // Äîáàâëåíèå ðàçáðîñà
-        Vector3 spreadVector = new Vector3(
-            Random.Range(-spread, spread),
-            Random.Range(-spread, spread),
-            Random.Range(-spread, spread)
-        );
-
+        Vector3 spreadVector = Random.insideUnitSphere * spread;
         if (rb != null)
         {
-            // Ïðèìåíåíèå ñèëû
-            rb.AddForce(firePoint.forward * bulletForce + spreadVector, ForceMode.Impulse);
+            rb.AddForce(bulletDirection * bulletForce + spreadVector, ForceMode.Impulse);
         }
         else
         {

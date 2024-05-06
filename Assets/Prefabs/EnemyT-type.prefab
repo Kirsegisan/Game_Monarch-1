@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 975028113184854827}
   - component: {fileID: 9163096757338305638}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trigger
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,8 +51,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.6349809, y: 2.6375823, z: 2.654292}
-  m_Center: {x: 0.016710043, y: 0.16710019, z: -0.04177499}
+  m_Size: {x: 3.4303958, y: 4.6113434, z: 4.1656847}
+  m_Center: {x: 0.075439565, y: 0.17284393, z: 0.02349472}
 --- !u!1 &1217227598799774658
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6206373332845805679}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: firePoint
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5059838021300082067}
   - component: {fileID: 2975420652315785386}
   - component: {fileID: 1811980312918395652}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3089705271255428885}
   - component: {fileID: 4642622540919960133}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4975494569940221076}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 1613559471096708165}
   - component: {fileID: 4924260239413238098}
   - component: {fileID: 764809963074608123}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyT-type
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 2988589240511928016}
   - component: {fileID: 8872852549890907511}
   - component: {fileID: 6477875887966320182}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2172503355144996566}
   - component: {fileID: 6098645459341358940}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9034688943579649466}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 7881670135272886825}
   - component: {fileID: 2868140307239656178}
   - component: {fileID: 3886792392161892891}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -774,9 +774,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: b8da42f11822e334c976286ec1e569e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8380157826906577798, guid: b8da42f11822e334c976286ec1e569e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -7146521406498821007, guid: b8da42f11822e334c976286ec1e569e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -6733177361254619370, guid: b8da42f11822e334c976286ec1e569e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: b8da42f11822e334c976286ec1e569e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: b8da42f11822e334c976286ec1e569e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b8da42f11822e334c976286ec1e569e4, type: 3}
       propertyPath: m_Name
       value: toster
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b8da42f11822e334c976286ec1e569e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: b8da42f11822e334c976286ec1e569e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: b8da42f11822e334c976286ec1e569e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700725330082129686, guid: b8da42f11822e334c976286ec1e569e4, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

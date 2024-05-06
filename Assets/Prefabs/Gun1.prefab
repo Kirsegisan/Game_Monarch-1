@@ -49,7 +49,11 @@ MonoBehaviour:
   firePoint: {fileID: 2343747076320293076}
   bulletPrefab: {fileID: 5778172370482098698, guid: 46b129c3cfb81174fbf0adb9f9786f7b, type: 3}
   bulletForce: 20
-  spread: 0.1
+  spread: 0
+  _creatorTag: Player
+  _creatorLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &4873584247594532739
 GameObject:
   m_ObjectHideFlags: 0
