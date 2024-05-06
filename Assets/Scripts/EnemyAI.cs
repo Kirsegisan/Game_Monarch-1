@@ -28,6 +28,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private SphereCollider attackCollider;
 
     [SerializeField] private float stepToAttack;
+    [SerializeField] private float damage = 1;
     private float minToAttack = 0.1f;
     private bool isAttack = false;
     [SerializeField] private float attackDastans;
@@ -112,9 +113,5 @@ public class EnemyAI : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        
-    }
 
 }

@@ -62,10 +62,6 @@ public class PlayerController : MonoBehaviour
 
 
 
-        // такты лечения
-
-
-
         // ну и все остальное
 
         if (playerData.health <= 0)
@@ -145,4 +141,6 @@ public class PlayerController : MonoBehaviour
             transform.eulerAngles += Vector3.up * Input.GetAxis("Mouse X") * lookSensitivity;
         }
     }
+
+
 }

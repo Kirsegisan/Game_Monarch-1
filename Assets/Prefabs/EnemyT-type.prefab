@@ -323,7 +323,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.5
-  m_Speed: 3.5
+  m_Speed: 50
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -357,16 +357,17 @@ MonoBehaviour:
     m_Bits: 64
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 100
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 3
   projectile: {fileID: 5778172370482098698, guid: 46b129c3cfb81174fbf0adb9f9786f7b, type: 3}
   projectileSpeed: 100
-  sightRange: 20
+  sightRange: 100
   attackRange: 10
   playerInSightRange: 0
   playerInAttackRange: 0
   firePoint: {fileID: 6206373332845805679}
   attackCollider: {fileID: 764809963074608123}
-  stepToAttack: 1
+  stepToAttack: 10
+  damage: 1
   attackDastans: 20
 --- !u!114 &1613559471096708165
 MonoBehaviour:
@@ -381,8 +382,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 6098645459341358940}
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 31
+  currentHealth: 31
   objectData: {fileID: 4924260239413238098}
   playerData: {fileID: 0}
 --- !u!114 &4924260239413238098
@@ -418,7 +419,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
