@@ -6,6 +6,7 @@ public class WeaponSwitch : MonoBehaviour
 {
     public GameObject parentObject;
     private int currentIndex = 0;
+    [SerializeField] private PlayerController playerController;
 
     void Start()
     {
@@ -65,5 +66,6 @@ public class WeaponSwitch : MonoBehaviour
     {
         // Включаем дочерний объект с указанным индексом
         parentObject.transform.GetChild(index).gameObject.SetActive(true);
+        playerController.shooter = parentObject.transform.GetChild(index).gameObject.GetComponent<Shooter>();
     }
 }

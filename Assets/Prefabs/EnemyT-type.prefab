@@ -323,7 +323,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.5
-  m_Speed: 50
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -400,8 +400,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullets: 100
   infiniteAmmo: 1
-  currentHealth: 100
-  maxHealth: 100
+  currentHealth: 31
+  maxHealth: 31
   isDead: 0
   isPlayer: 0
 --- !u!135 &764809963074608123

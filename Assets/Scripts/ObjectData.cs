@@ -18,4 +18,9 @@ public class ObjectData : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        //Debug.Log("damage: " + damage + "hp: " + currentHealth);
+    }
 }
