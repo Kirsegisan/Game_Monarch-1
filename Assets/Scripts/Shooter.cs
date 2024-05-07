@@ -9,6 +9,19 @@ public class Shooter : MonoBehaviour
     public float bulletForce = 20f;
     public float spread = 0.1f;
 
+    void Awake()
+    {
+        GameObject firePointObject = GameObject.FindGameObjectWithTag("FirePoint");
+        if (firePointObject != null)
+        {
+            firePoint = firePointObject.transform;
+        }
+        else
+        {
+            Debug.LogError("FirePoint не найден. Добавьте объект FirePoint с тегом 'FirePoint'.");
+        }
+    }
+
     public void Fire()
     {
         Ray ray = new Ray(firePoint.position, firePoint.forward);

@@ -243,10 +243,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a946903577a3b4dba5b1be7f04ad64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 100
   playerData: {fileID: 11400000, guid: 37747a04e539e8440b0169687d3fd552, type: 2}
   destructionDelay: 20
   creator: God
+  creatorLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7307334197519514524
 GameObject:
   m_ObjectHideFlags: 0
