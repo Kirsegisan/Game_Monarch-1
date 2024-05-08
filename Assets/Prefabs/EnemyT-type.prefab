@@ -256,9 +256,9 @@ GameObject:
   - component: {fileID: 258262816805488643}
   - component: {fileID: 6454116770001727474}
   - component: {fileID: 1461187920999414322}
+  - component: {fileID: 2829057802681716390}
   - component: {fileID: 1613559471096708165}
   - component: {fileID: 4924260239413238098}
-  - component: {fileID: 764809963074608123}
   m_Layer: 7
   m_Name: EnemyT-type
   m_TagString: Enemy
@@ -357,18 +357,28 @@ MonoBehaviour:
     m_Bits: 64
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 100
-  timeBetweenAttacks: 3
-  projectile: {fileID: 5778172370482098698, guid: 46b129c3cfb81174fbf0adb9f9786f7b, type: 3}
-  projectileSpeed: 100
-  sightRange: 100
   attackRange: 10
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  firePoint: {fileID: 6206373332845805679}
-  attackCollider: {fileID: 764809963074608123}
-  stepToAttack: 10
-  damage: 1
-  attackDastans: 20
+  sightRange: 100
+--- !u!114 &2829057802681716390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032917157227003910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c59cd3c006de79429ab0b9f9a6b54bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectile: {fileID: 0}
+  _firePoint: {fileID: 0}
+  _projectileSpeed: 1
+  _timeBetweenAttacks: 2
+  _repelRadius: 25
+  _repelForce: 10000
+  _ranged: 0
+  _forceAttack: 1
 --- !u!114 &1613559471096708165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,27 +414,6 @@ MonoBehaviour:
   maxHealth: 31
   isDead: 0
   isPlayer: 0
---- !u!135 &764809963074608123
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4032917157227003910}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5603425000173613450
 GameObject:
   m_ObjectHideFlags: 0

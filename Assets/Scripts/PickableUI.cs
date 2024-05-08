@@ -9,12 +9,10 @@ public class PickableUI : MonoBehaviour
     [SerializeField] private GameObject pickableUI;
     [SerializeField] private Camera cam;
 
-    // Расстояние, на котором срабатывает подбор
     public float pickupDistance = 3f;
 
     private void Start()
     {
-        // По умолчанию скрываем UI
         pickableUI.SetActive(false);
     }
 
@@ -24,19 +22,16 @@ public class PickableUI : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        // Проверяем, попал ли луч на объект с тегом "Pickable"
         if (Physics.Raycast(ray, out hit, pickupDistance) && hit.collider.CompareTag("Pickable"))
         {
-            Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
             Pickable pickableObject = hit.collider.GetComponent<Pickable>();           
 
             if (pickableObject)
             {
-                // Показываем UI и отображаем имя подбираемого объекта
                 pickableUI.SetActive(true);
                 objectNameText.text = pickableObject.objectName;
 
-                // Проверяем нажатие клавиши "E"
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     // Вызываем метод взаимодействия с объектом

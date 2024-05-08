@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class Pickable : MonoBehaviour
 {
     [SerializeField] public string objectName = "Ты какого хрена имя не поставил!?";
