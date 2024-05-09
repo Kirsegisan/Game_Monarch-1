@@ -375,8 +375,9 @@ MonoBehaviour:
   _firePoint: {fileID: 0}
   _projectileSpeed: 1
   _timeBetweenAttacks: 2
-  _repelRadius: 25
-  _repelForce: 10000
+  _repelRadius: 10
+  _repelForce: 300
+  _stanTime: 0.4
   _ranged: 0
   _forceAttack: 1
 --- !u!114 &1613559471096708165

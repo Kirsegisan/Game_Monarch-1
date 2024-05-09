@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Pickable
   - FirePoint
+  - Interactive
   layers:
   - Default
   - TransparentFX
