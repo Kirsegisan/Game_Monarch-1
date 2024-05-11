@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (!isInfluenced)
+        if (!isInfluenced && _isGrounded)
         {
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
