@@ -1202,7 +1202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f570cc6ca408a4342accc7ea2292a9fc, type: 3}
       propertyPath: m_Name
-      value: Spaider
+      value: Spider
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f570cc6ca408a4342accc7ea2292a9fc, type: 3}
       propertyPath: m_Layer
@@ -2092,50 +2092,7 @@ PrefabInstance:
     - {fileID: 1831013852277535995, guid: f570cc6ca408a4342accc7ea2292a9fc, type: 3}
     - {fileID: 3558681796082010487, guid: f570cc6ca408a4342accc7ea2292a9fc, type: 3}
     - {fileID: 75924151850123656, guid: f570cc6ca408a4342accc7ea2292a9fc, type: 3}
+    - {fileID: -1606057615522382512, guid: f570cc6ca408a4342accc7ea2292a9fc, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f570cc6ca408a4342accc7ea2292a9fc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 209878695400883364}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f570cc6ca408a4342accc7ea2292a9fc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8387361871750326203}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f570cc6ca408a4342accc7ea2292a9fc, type: 3}
---- !u!1 &5395315430826563318 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f570cc6ca408a4342accc7ea2292a9fc, type: 3}
-  m_PrefabInstance: {fileID: 5053438031828413351}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &209878695400883364
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5395315430826563318}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.6653137, y: 2.039219, z: 3.2581253}
-  m_Center: {x: 0.0048675537, y: 1.341299, z: -0.51213455}
---- !u!114 &8387361871750326203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5395315430826563318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12330f19776ba704ca33d7e3a58213a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

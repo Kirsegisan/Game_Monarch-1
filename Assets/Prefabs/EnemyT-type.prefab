@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 258262816805488643}
   - component: {fileID: 6454116770001727474}
   - component: {fileID: 1461187920999414322}
-  - component: {fileID: 2829057802681716390}
+  - component: {fileID: 8684724202914893856}
   - component: {fileID: 1613559471096708165}
   - component: {fileID: 4924260239413238098}
   m_Layer: 7
@@ -355,11 +355,10 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 100
   attackRange: 10
   sightRange: 100
---- !u!114 &2829057802681716390
+--- !u!114 &8684724202914893856
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -368,18 +367,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4032917157227003910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c59cd3c006de79429ab0b9f9a6b54bb, type: 3}
+  m_Script: {fileID: 11500000, guid: fb9b0e2219ca9e347b0178a05f64e2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectile: {fileID: 0}
-  _firePoint: {fileID: 0}
-  _projectileSpeed: 1
-  _timeBetweenAttacks: 2
+  _timeBetweenAttacks: 3
   _repelRadius: 10
-  _repelForce: 300
-  _stanTime: 0.4
-  _ranged: 0
-  _forceAttack: 1
+  _repelForce: 500
+  _stanTime: 0.5
 --- !u!114 &1613559471096708165
 MonoBehaviour:
   m_ObjectHideFlags: 0

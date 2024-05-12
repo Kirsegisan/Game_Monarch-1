@@ -7,7 +7,6 @@ public class SpiderAnimation : MonoBehaviour
 
     private Animator spiderAnimator;
 
-    // Start is called before the first frame update
     void Start()
     {
         spiderAnimator = GetComponent<Animator>();

@@ -17,7 +17,10 @@ public class Shooter : MonoBehaviour
 
     private void Start()
     {
-        FindFirePoint();
+        if (firePoint == null)
+        {
+            FindFirePoint();
+        }
     }
 
     private void FindFirePoint()
@@ -71,20 +74,20 @@ public class Shooter : MonoBehaviour
     private void ApplyDamage(RaycastHit hit)
     {
         float damage = CalculateDamage(hit.distance);
-        if (hit.transform != null )
+        if (hit.transform != null)
         {
-            if (hit.transform.CompareTag("Enemy"))
+            if (hit.transform.CompareTag("Enemy") && gameObject.tag != "Enemy")
             {
                 ObjectData objectData = hit.transform.GetComponent<ObjectData>();
                 if (objectData)
                 {
-                    //Debug.Log(damage);
+                    Debug.Log(damage);
                     objectData.TakeDamage(damage);
                 }
             }
-            else if (hit.transform.CompareTag("Player"))
+            else if (hit.transform.CompareTag("Player") && gameObject.tag != "Player")
             {
-                hit.transform.GetComponent<PlayerController>()?.HealingAndDamage(damage, 0);
+                hit.transform.GetComponent<PlayerShooting>()?.HealingAndDamage(damage, 0);
             }
         }
 

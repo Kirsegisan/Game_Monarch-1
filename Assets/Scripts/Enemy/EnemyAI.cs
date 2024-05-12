@@ -1,31 +1,48 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public NavMeshAgent agent;
-    public Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
+    [Header("References")]
+    [SerializeField] private NavMeshAgent agent; // Ссылка на NavMeshAgent врага
+    [SerializeField] private Transform player; // Ссылка на игрока
+    [SerializeField] private LayerMask whatIsGround; // Слой для определения земли
+    [SerializeField] private LayerMask whatIsPlayer; // Слой для определения игрока
+
+    [Header("Patrol Parameters")]
+    [SerializeField] private float walkPointRange = 10f; // Радиус, в котором генерируются точки патрулирования
+    [SerializeField] private float rotationSpeed = 1f;
+
+    [Header("Combat Parameters")]
+    [SerializeField] private float attackRange = 2f; // Радиус атаки
+    [SerializeField] private float sightRange = 10f; // Радиус обнаружения игрока
 
     // Параметры для патрулирования
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
+    protected Vector3 walkPoint;
+    protected bool walkPointSet;
 
-    // Параметры для атаки
-    [SerializeField] private float attackRange;
-    [SerializeField] private float sightRange;
-    private EnemyAttack enemyAttack;
+    // Ссылка на скрипт атаки
+    protected BasicEnemyAttack enemyAttack;
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        // Находим игрока и получаем ссылки на компоненты
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject fObj in players)
+        {
+            PlayerMovement playerMovement = fObj.GetComponent<PlayerMovement>();
+            if (playerMovement != null)
+            {
+                player = fObj.transform;
+            }
+        }
         agent = GetComponent<NavMeshAgent>();
-        enemyAttack = GetComponent<EnemyAttack>(); // Получаем ссылку на скрипт EnemyAttack
+        enemyAttack = GetComponent<BasicEnemyAttack>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         // Проверка на наличие игрока в области видимости и радиусе атаки
         bool playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
@@ -39,7 +56,7 @@ public class EnemyAI : MonoBehaviour
             AttackPlayer();
     }
 
-    private void Patrolling()
+    protected virtual void Patrolling()
     {
         if (!walkPointSet)
             SearchWalkPoint();
@@ -54,7 +71,7 @@ public class EnemyAI : MonoBehaviour
             walkPointSet = false;
     }
 
-    private void SearchWalkPoint()
+    protected virtual void SearchWalkPoint()
     {
         // Генерация случайной точки патрулирования
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -66,18 +83,23 @@ public class EnemyAI : MonoBehaviour
             walkPointSet = true;
     }
 
-    private void ChasePlayer()
+    protected virtual void ChasePlayer()
     {
         agent.SetDestination(player.position);
     }
 
-    private void AttackPlayer()
+    protected virtual void AttackPlayer()
     {
         agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        Vector3 direction = player.position - transform.position;
+        direction.y = 0f;
 
-        // Используем атаку из скрипта EnemyAttack
-        enemyAttack.Attack(player);
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+
+        if (enemyAttack != null && player != null)
+            enemyAttack.Attack(player);
     }
 }
