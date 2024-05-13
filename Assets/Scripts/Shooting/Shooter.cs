@@ -10,6 +10,7 @@ public class Shooter : MonoBehaviour
     [SerializeField] private float maxDistance = 100f;
     [SerializeField] private float maxDamage = 10f;
     [SerializeField] private float damageFalloff = 0.1f;
+    [SerializeField] public float fireRate = 1f;
 
     private float rayDistance = 999f;
 
@@ -49,12 +50,12 @@ public class Shooter : MonoBehaviour
                 ApplyDamageDelayed(hit, travelTime);
 
                 // Создание и запуск движения снаряда
-                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
                 Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
                 if (bulletRigidbody != null)
                 {
                     bulletRigidbody.velocity = firePoint.forward * bulletSpeed;
-                    Destroy(bullet, travelTime); // Уничтожение снаряда после указанного времени
+                    Destroy(bullet, travelTime);
                 }
             }
         }
@@ -81,7 +82,7 @@ public class Shooter : MonoBehaviour
                 ObjectData objectData = hit.transform.GetComponent<ObjectData>();
                 if (objectData)
                 {
-                    Debug.Log(damage);
+                    //Debug.Log(damage);
                     objectData.TakeDamage(damage);
                 }
             }

@@ -16,12 +16,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float rotationSpeed = 1f;
 
     [Header("Combat Parameters")]
-    [SerializeField] private float attackRange = 2f; // Радиус атаки
+    [SerializeField] private float attackRange = 2f; // Радиус в которой враг остановится и начнет атаковать
     [SerializeField] private float sightRange = 10f; // Радиус обнаружения игрока
-
-    // Параметры для патрулирования
-    protected Vector3 walkPoint;
-    protected bool walkPointSet;
 
     // Ссылка на скрипт атаки
     protected BasicEnemyAttack enemyAttack;
@@ -58,29 +54,21 @@ public class EnemyAI : MonoBehaviour
 
     protected virtual void Patrolling()
     {
-        if (!walkPointSet)
-            SearchWalkPoint();
-
-        if (walkPointSet)
-            agent.SetDestination(walkPoint);
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        // Проверка на достижение точки патрулирования
-        if (distanceToWalkPoint.magnitude < 1f)
-            walkPointSet = false;
+        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        {
+            SearchRandomPatrolPoint();
+        }
     }
 
-    protected virtual void SearchWalkPoint()
+    protected virtual void SearchRandomPatrolPoint()
     {
-        // Генерация случайной точки патрулирования
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
+        Vector3 randomDirection = Random.insideUnitSphere * walkPointRange;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, walkPointRange, 1);
+        Vector3 finalPosition = hit.position;
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-            walkPointSet = true;
+        agent.SetDestination(finalPosition);
     }
 
     protected virtual void ChasePlayer()

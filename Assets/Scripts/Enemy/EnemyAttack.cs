@@ -46,7 +46,7 @@ public class EnemyAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(_stanTime);
         if (_movement != null)
-            _movement.SetInflunce(false);
+            _movement.SetInfluence(false);
     }
 
     private void RepelPlayers()
@@ -57,7 +57,7 @@ public class EnemyAttack : MonoBehaviour
             if (col.CompareTag("Player"))
             {
                 _movement = col.gameObject.GetComponentInParent<PlayerMovement>();
-                _movement.SetInflunce(true);
+                _movement.SetInfluence(true);
                 StartCoroutine(ResetIsInfluenced());
                 Vector3 repelDirection = (col.transform.position - transform.position);
                 float distance = Vector3.Distance(col.transform.position, transform.position);

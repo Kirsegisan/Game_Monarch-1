@@ -26,7 +26,7 @@ public class SpiderEnemyAI : EnemyAI
     protected override void Patrolling()
     {
         base.Patrolling();
-        spiderAnimation.Stop();
+        spiderAnimation.Run();
     }
 }
 

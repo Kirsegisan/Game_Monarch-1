@@ -7,7 +7,7 @@ public class PlayerShooting : MonoBehaviour
     [Header("Shooting Settings")]
     public Shooter shooter;
     public bool isAutoFiring = false;
-    public float fireRate = 0.5f;
+    private float fireRate;
     private float nextFireTime = 0f;
 
     [Header("Healing Settings")]
@@ -28,6 +28,8 @@ public class PlayerShooting : MonoBehaviour
         playerData.health = playerData.maxHealth;
         handAnimator = GetComponent<Animator>();
         shootSound = GetComponent<AudioSource>();
+        fireRate = shooter.fireRate;
+       
     }
 
     public void HealingAndDamage(float damage, float healAmount)
@@ -37,6 +39,8 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
+        fireRate = shooter.fireRate;
+
         if (!canHealing)
         {
             angleHealingCooldown -= Time.deltaTime;
@@ -46,7 +50,7 @@ public class PlayerShooting : MonoBehaviour
 
         if (playerData.health <= 0)
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.H) && canHealing)

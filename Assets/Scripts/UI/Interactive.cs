@@ -10,7 +10,6 @@ public class Interactive : MonoBehaviour
 
     public virtual void Interact()
     {
-        //Destroy(gameObject);
-        Debug.Log("Вы подобрали объект: " + objectName);
+        Debug.Log("Взаимодействие с" + objectName);
     }
 }

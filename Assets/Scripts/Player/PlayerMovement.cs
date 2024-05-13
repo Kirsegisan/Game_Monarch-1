@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void SetInflunce(bool inflated)
+    public void SetInfluence(bool inflated)
     {
         isInfluenced = inflated;
     }
