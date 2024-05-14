@@ -162,9 +162,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901995d1ccd7d2c45bf35b7beffb964c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: "E) \u041A\u043D\u043E\u043F\u043A\u0430"
+  objectName: "\u041A\u043D\u043E\u043F\u043A\u0430"
+  interactionButton: E)
   _pressDepth: 0.3
   _cooldownDuration: 1
+  _handler: {fileID: 0}
   pushed: 0
 --- !u!65 &8451014301140030949
 BoxCollider:

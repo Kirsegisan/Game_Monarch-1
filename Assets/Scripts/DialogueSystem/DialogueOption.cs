@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class DialogueOption
 {
+    [TextArea(3, 10)]
     public string optionText;
     public int nextNodeIndex;
 }

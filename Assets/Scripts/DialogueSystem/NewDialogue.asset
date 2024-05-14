@@ -16,7 +16,14 @@ MonoBehaviour:
   - dialogueText: 123
     options:
     - optionText: 1
-      nextNodeIndex: 0
+      nextNodeIndex: 1
     - optionText: 2
+      nextNodeIndex: 1
+    nextNodeIndex: 0
+  - dialogueText: 321
+    options:
+    - optionText: 098
+      nextNodeIndex: 0
+    - optionText: "\u0412\u044B\u0445\u043E\u0434[EXIT]"
       nextNodeIndex: 0
     nextNodeIndex: 0
