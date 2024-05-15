@@ -52,6 +52,8 @@ MonoBehaviour:
   maxDamage: 3
   damageFalloff: 1
   fireRate: 5
+  ammoUse: 1
+  playerData: {fileID: 11400000, guid: 37747a04e539e8440b0169687d3fd552, type: 2}
 --- !u!1 &7841063062753738766
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,10 +42,13 @@ public class Shooter : MonoBehaviour
             Debug.LogError("FirePoint is not assigned.");
             return;
         }
-        if (playerData.ammo <= 0)
+        if (playerData != null)
         {
-            Debug.LogWarning("Not enough ammo.");
-            return;
+            if (playerData.ammo - ammoUse < 0)
+            {
+                Debug.LogWarning("Not enough ammo.");
+                return;
+            }
         }
         if (this.isActiveAndEnabled)
         {

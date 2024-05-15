@@ -9,26 +9,15 @@ public class PickableWeapon : Interactive
     [SerializeField] private Transform _referenceWeapon;
     [SerializeField] private WeaponSwitch weaponSwitch;
     [SerializeField] private PlayerData playerData;
-
-    private int index = 0;
+    [SerializeField] private WeaponGiver giver;
 
     public override void Interact()
     {
         base.Interact();
-
-        if (_objectToSpawn != null && _parentObject != null && _referenceWeapon != null)
-        {
-            GameObject newObject = Instantiate(_objectToSpawn, _parentObject);
-            // Устанавливаем позицию, поворот и размер нового объекта такими же, как у начальной пушки
-            newObject.transform.localPosition = _referenceWeapon.localPosition;
-            newObject.transform.localRotation = _referenceWeapon.localRotation;
-            newObject.transform.localScale = _referenceWeapon.localScale;
-
-            // Отключаем все дочерние объекты, кроме только что созданного
-            weaponSwitch.SwitchToNextChild();
-            newObject.GetComponent<Shooter>().playerData = playerData;
-        }
+        giver.SpawnWeapon(_objectToSpawn, _parentObject, _referenceWeapon, weaponSwitch, playerData);
         Destroy(gameObject);
     }
+
+
 }
 

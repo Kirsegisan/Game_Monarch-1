@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class DialogueStarter : Interactive
 {
-    //q
     [SerializeField] private Dialogue dialogue;
     [SerializeField] private DialogueManager dialogueManager;
+    [SerializeField] private SpecialConditions conditions;
+    [SerializeField] private GameObject toDelete;
+    [SerializeField] private GameObject toGive;
 
     public override void Interact()
     {
         base.Interact();
         dialogueManager.StartDialogue(dialogue);
+        dialogueManager.GiveParams(toDelete, toGive);
     }
 }

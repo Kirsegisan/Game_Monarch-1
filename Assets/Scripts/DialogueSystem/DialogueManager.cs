@@ -8,16 +8,22 @@ public class DialogueManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private TMP_Text[] optionTexts;
-    [SerializeField] private Button[] optionButtons; // Добавлен массив кнопок
+    [SerializeField] private Button[] optionButtons;
 
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject dialogueUI;
+
+    [SerializeField] private SpecialConditions conditions;
 
     private Dialogue currentDialogue;
     private DialogueNode currentNode;
 
     private PlayerMovement movement;
     private PlayerShooting shooting;
+
+    private GameObject toDelete;
+    private GameObject toSpawn;
+
 
     private void Start()
     {
@@ -46,7 +52,23 @@ public class DialogueManager : MonoBehaviour
         if (selectedOption.optionText.Contains("[EXIT]"))
             EndDialogue();
         if (selectedOption.optionText.Contains("[KTULHU]"))
-            KtulhuComing();
+            conditions.Ktulhu();
+        if (selectedOption.optionText.Contains("[DELETE]"))
+        {
+            if (toDelete != null)
+            {
+                conditions.DeleteAfterUse(toDelete);
+            }
+        }
+        if (selectedOption.optionText.Contains("[GIVE]"))
+        {
+            if (toSpawn != null)
+            {
+                conditions.GiveWeapon(toSpawn);
+            }
+        }
+
+
     }
 
     private void DisplayCurrentNode()
@@ -62,7 +84,7 @@ public class DialogueManager : MonoBehaviour
             {
                 optionTexts[i].gameObject.SetActive(true);
                 // Replace special tags with an empty string when displaying option text
-                string optionText = currentNode.options[i].optionText.Replace("[EXIT]", "").Replace("[KTULHU]", "");
+                string optionText = currentNode.options[i].optionText.Replace("[EXIT]", "").Replace("[KTULHU]", "").Replace("[DELETE]", "").Replace("[GIVE]", "");
                 optionTexts[i].text = optionText;
                 optionButtons[i].gameObject.SetActive(true);
             }
@@ -74,6 +96,17 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public void GiveParams(GameObject fToDelete, GameObject fToSpawn)
+    {
+        if (fToDelete != null)
+        {
+            toDelete = fToDelete;
+        }
+        if (fToSpawn != null)
+        {
+            toSpawn = fToSpawn;
+        }
+    }
 
     private void EndDialogue()
     {
@@ -101,10 +134,5 @@ public class DialogueManager : MonoBehaviour
     {
         movement.enabled = enable;
         shooting.enabled = enable;
-    }
-
-    private void KtulhuComing()
-    {
-
     }
 }
