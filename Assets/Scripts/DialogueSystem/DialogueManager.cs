@@ -42,8 +42,11 @@ public class DialogueManager : MonoBehaviour
         currentNode = currentDialogue.nodes[selectedOption.nextNodeIndex];
         DisplayCurrentNode();
 
+        // Check for special tags in the selected option text
         if (selectedOption.optionText.Contains("[EXIT]"))
             EndDialogue();
+        if (selectedOption.optionText.Contains("[KTULHU]"))
+            KtulhuComing();
     }
 
     private void DisplayCurrentNode()
@@ -58,7 +61,9 @@ public class DialogueManager : MonoBehaviour
             if (i < currentNode.options.Length)
             {
                 optionTexts[i].gameObject.SetActive(true);
-                optionTexts[i].text = currentNode.options[i].optionText.Replace("[EXIT]", "");
+                // Replace special tags with an empty string when displaying option text
+                string optionText = currentNode.options[i].optionText.Replace("[EXIT]", "").Replace("[KTULHU]", "");
+                optionTexts[i].text = optionText;
                 optionButtons[i].gameObject.SetActive(true);
             }
             else
@@ -68,6 +73,7 @@ public class DialogueManager : MonoBehaviour
             }
         }
     }
+
 
     private void EndDialogue()
     {
@@ -95,5 +101,10 @@ public class DialogueManager : MonoBehaviour
     {
         movement.enabled = enable;
         shooting.enabled = enable;
+    }
+
+    private void KtulhuComing()
+    {
+
     }
 }

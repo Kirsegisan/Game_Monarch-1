@@ -11,6 +11,8 @@ public class Shooter : MonoBehaviour
     [SerializeField] private float maxDamage = 10f;
     [SerializeField] private float damageFalloff = 0.1f;
     [SerializeField] public float fireRate = 1f;
+    [SerializeField] public int ammoUse = 1;
+    [SerializeField] public PlayerData playerData;
 
     private float rayDistance = 999f;
 
@@ -40,11 +42,21 @@ public class Shooter : MonoBehaviour
             Debug.LogError("FirePoint is not assigned.");
             return;
         }
+        if (playerData.ammo <= 0)
+        {
+            Debug.LogWarning("Not enough ammo.");
+            return;
+        }
         if (this.isActiveAndEnabled)
         {
             Ray ray = new Ray(firePoint.position, firePoint.forward);
             if (Physics.Raycast(ray, out RaycastHit hit, rayDistance))
             {
+                if (playerData != null)
+                {
+                    playerData.ammo -= ammoUse;
+                }
+
                 //Debug.Log($"{this.name} {hit.transform.name}");
                 float travelTime = hit.distance / bulletSpeed;
                 ApplyDamageDelayed(hit, travelTime);

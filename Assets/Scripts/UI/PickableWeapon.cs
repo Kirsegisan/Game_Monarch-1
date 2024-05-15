@@ -7,6 +7,10 @@ public class PickableWeapon : Interactive
     [SerializeField] private GameObject _objectToSpawn;
     [SerializeField] private Transform _parentObject;
     [SerializeField] private Transform _referenceWeapon;
+    [SerializeField] private WeaponSwitch weaponSwitch;
+    [SerializeField] private PlayerData playerData;
+
+    private int index = 0;
 
     public override void Interact()
     {
@@ -21,13 +25,8 @@ public class PickableWeapon : Interactive
             newObject.transform.localScale = _referenceWeapon.localScale;
 
             // Отключаем все дочерние объекты, кроме только что созданного
-            foreach (Transform child in _parentObject)
-            {
-                if (child.gameObject != newObject)
-                {
-                    child.gameObject.SetActive(false);
-                }
-            }
+            weaponSwitch.SwitchToNextChild();
+            newObject.GetComponent<Shooter>().playerData = playerData;
         }
         Destroy(gameObject);
     }

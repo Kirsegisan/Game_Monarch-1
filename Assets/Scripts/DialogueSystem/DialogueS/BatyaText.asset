@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df504e634fcb1f84dbb2b4f9a929c250, type: 3}
-  m_Name: TMP
+  m_Name: BatyaText
   m_EditorClassIdentifier: 
   nodes:
   - dialogueText: "\u041F\u0440\u0438\u0432\u0435\u0442, \u043F\u0430\u0446\u0430\u043D!

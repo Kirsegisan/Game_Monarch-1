@@ -31,7 +31,7 @@ public class WeaponSwitch : MonoBehaviour
         }
     }
 
-    void SwitchToNextChild()
+    public void SwitchToNextChild()
     {
         _parentObject.transform.GetChild(_currentIndex).gameObject.SetActive(false);
 
@@ -47,7 +47,7 @@ public class WeaponSwitch : MonoBehaviour
         SetActiveChild(_currentIndex);
     }
 
-    void SwitchToPreviousChild()
+    public void SwitchToPreviousChild()
     {
         // Выключаем текущий активный дочерний объект
         _parentObject.transform.GetChild(_currentIndex).gameObject.SetActive(false);
@@ -64,7 +64,7 @@ public class WeaponSwitch : MonoBehaviour
         SetActiveChild(_currentIndex);
     }
 
-    void SetActiveChild(int index)
+    public void SetActiveChild(int index)
     {
         // Включаем дочерний объект с указанным индексом
         _parentObject.transform.GetChild(index).gameObject.SetActive(true);

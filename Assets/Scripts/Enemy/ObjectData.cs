@@ -9,12 +9,12 @@ public class ObjectData : MonoBehaviour
     public float currentHealth = 100;
     public float maxHealth = 100;
     public bool isDead = false;
-    public bool isPlayer;
 
     private void Update()
     {
-        if ((currentHealth <= 0 || maxHealth <= 0) && !isPlayer)
+        if ((currentHealth <= 0 || maxHealth <= 0))
         {
+            isDead = true;
             Destroy(gameObject);
         }
     }

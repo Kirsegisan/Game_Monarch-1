@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour
     public bool isAutoFiring = false;
     private float fireRate;
     private float nextFireTime = 0f;
+    [SerializeField] private int startAmmo = 100;
 
     [Header("Healing Settings")]
     [SerializeField] private float healingCooldown = 5f; // Кулдаун хилки в секундах
@@ -26,6 +27,7 @@ public class PlayerShooting : MonoBehaviour
     private void Start()
     {
         playerData.health = playerData.maxHealth;
+        playerData.ammo = startAmmo;
         handAnimator = GetComponent<Animator>();
         shootSound = GetComponent<AudioSource>();
         fireRate = shooter.fireRate;
