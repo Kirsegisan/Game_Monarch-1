@@ -11,8 +11,11 @@ public class VoiceAssistant : MonoBehaviour
 
     [SerializeField] private AudioClip[] lowAmmoClips;
     [SerializeField] private AudioClip[] lowHealthClips;
+    [SerializeField] private AudioClip[] highEnemyAmountClips;
 
     [SerializeField] private float clipDelay = 1f;
+    [SerializeField] private float enemyDetectionRadius = 10f;
+    [SerializeField] private int enemyThreshold = 3;
 
     private bool isPlayingClip = false;
 
@@ -54,5 +57,29 @@ public class VoiceAssistant : MonoBehaviour
         yield return new WaitForSeconds(clipToPlay.length + clipDelay);
 
         isPlayingClip = false;
+    }
+
+    private void Update()
+    {
+        CheckForEnemies();
+    }
+
+    private void CheckForEnemies()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, enemyDetectionRadius);
+        int enemyCount = 0;
+
+        foreach (Collider hitCollider in hitColliders)
+        {
+            if (hitCollider.CompareTag("Enemy"))
+            {
+                enemyCount++;
+            }
+        }
+
+        if (enemyCount > enemyThreshold && !isPlayingClip)
+        {
+            StartCoroutine(PlayClipWithDelay(highEnemyAmountClips));
+        }
     }
 }

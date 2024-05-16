@@ -11,6 +11,17 @@ public class Target : ObjectData
         animator = GetComponentInChildren<Animator>();
     }
 
+    protected override void Update()
+    {
+        if ((currentHealth <= 0 || maxHealth <= 0))
+        {
+            if (isActive == true)
+            {
+                Die();
+            }
+        }
+    }
+
     public void StartTarget()
     {
         animator.SetBool("On", true);

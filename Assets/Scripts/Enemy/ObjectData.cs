@@ -10,7 +10,7 @@ public class ObjectData : MonoBehaviour
     [SerializeField] public float maxHealth = 100;
     [SerializeField] private HealthBar healthBar;
 
-    private void Update()
+    protected virtual void Update()
     {
         if ((currentHealth <= 0 || maxHealth <= 0))
         {
