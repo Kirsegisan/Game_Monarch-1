@@ -9,7 +9,6 @@ public class SpeechTrigger : MonoBehaviour
 
     private bool isPlaying = false;
     private AudioSource audioSource;
-    private int currentClipIndex = 0;
 
     private void Start()
     {

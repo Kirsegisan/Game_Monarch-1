@@ -25,21 +25,28 @@ public class TutorialScene : MonoBehaviour
     [Header("Healing station")]
     [SerializeField] private GameObject healingStation;
 
-    [Header("Healing station")]
+    [Header("Audio")]
     [SerializeField] private AudioClip[] tutorialAudioClipsN1;
     [SerializeField] private AudioClip[] tutorialAudioClipsN2;
     [SerializeField] private AudioClip[] tutorialAudioClipsN3;
     [SerializeField] private AudioClip[] tutorialAudioClipsN4;
 
+    [Header("TutorialEnded")]
+    [SerializeField] private GameObject roomButton;
+    [SerializeField] private GameObject batya;
+    [SerializeField] private PlayerData playerData;
+
     public bool tutorialStarted = false;
     public bool gunPicked = false;
     public bool targetsSetupped = false;
+    public bool pointingToPlatformActive = false;
 
     private AudioSource audioSource;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        weaponToTake.SetActive(false);
     }
 
     private void Update()
@@ -47,7 +54,6 @@ public class TutorialScene : MonoBehaviour
         if (weaponToTake == null && tutorialStarted && !gunPicked)
         {
             gunPicked = true;
-            platform.GetComponent<Renderer>().material = platformHighlight;
             pointingToWeapon.SetActive(false);
             Debug.Log("Speech2");
             StartCoroutine(PlayTutorialAudioClips(tutorialAudioClipsN2, ActivatePointingToPlatform));
@@ -58,7 +64,7 @@ public class TutorialScene : MonoBehaviour
             {
                 Debug.Log("Speech4");
                 targetsSetupped = false;
-                StartCoroutine(PlayTutorialAudioClips(tutorialAudioClipsN4, null));
+                StartCoroutine(PlayTutorialAudioClips(tutorialAudioClipsN4, TutorialEnded));
             }
         }
 
@@ -105,11 +111,14 @@ public class TutorialScene : MonoBehaviour
     private void ActivatePointingToWeapon()
     {
         pointingToWeapon.SetActive(true);
+        weaponToTake.SetActive(true);
     }
 
     private void ActivatePointingToPlatform()
     {
         pointingToPlatform.SetActive(true);
+        platform.GetComponent<Renderer>().material = platformHighlight;
+        pointingToPlatformActive = true;
     }
     private bool AllTargetsInactive()
     {
@@ -121,6 +130,13 @@ public class TutorialScene : MonoBehaviour
             }
         }
         return true;
+    }
+
+    private void TutorialEnded()
+    {
+        roomButton.SetActive(true);
+        batya.SetActive(true);
+        playerData.ammo = 200;
     }
 
 }

@@ -20,6 +20,8 @@ public class Target : ObjectData
     protected override void Die()
     {
         animator.SetBool("Off", true);
+        animator.SetBool("On", false);
+        animator.SetBool("Jump", false);
         isActive = false;
     }
 }

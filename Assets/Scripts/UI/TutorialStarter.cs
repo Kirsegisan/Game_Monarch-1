@@ -12,6 +12,8 @@ public class TutorialStarter : Interactive
         if (!scene.tutorialStarted)
         {
             scene.StartTutorial();
+            objectName = "Помошник Б.А.Т.Я.";
+            interactionButton = "";
         }
     }
 }

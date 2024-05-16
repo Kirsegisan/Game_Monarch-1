@@ -12,7 +12,7 @@ public class TutorialPlatform : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (scene.tutorialStarted && scene.gunPicked)
+            if (scene.tutorialStarted && scene.pointingToPlatformActive)
             {
                 gameObject.GetComponent<Renderer>().material = defaultMaterial;
                 scene.ShootTraining();
