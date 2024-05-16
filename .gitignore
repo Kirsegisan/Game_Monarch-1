@@ -1,0 +1,12 @@
+/*
+/*/
+
+# Git meta files
+!.gitignore
+!.gitattributes
+!README.md
+
+# Whitelisted directories/files
+!/ProjectSettings/
+!/Assets/ 
+!/Packages/ 
