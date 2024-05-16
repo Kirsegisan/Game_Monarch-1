@@ -20,9 +20,13 @@ public class PlayerShooting : MonoBehaviour
     [Header("Animation and Sound")]
     private Animator handAnimator;
     private AudioSource shootSound;
+    [SerializeField] private VoiceAssistant voiceAssistant;
 
     [Header("Player Data")]
     [SerializeField] private PlayerData playerData;
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private AmmoDisplay ammoDisplay;
+
 
     private void Start()
     {
@@ -37,6 +41,8 @@ public class PlayerShooting : MonoBehaviour
     public void HealingAndDamage(float damage, float healAmount)
     {
         playerData.health -= damage - healAmount;
+        voiceAssistant.LowHealth(0.1f);
+        healthBar.UpdateHealthBar();
     }
 
     void Update()
@@ -64,6 +70,8 @@ public class PlayerShooting : MonoBehaviour
 
         if (isAutoFiring && Time.time >= nextFireTime && Input.GetButton("Fire1"))
         {
+            voiceAssistant.LowAmmo(0);
+            ammoDisplay.UpdateAmmoText();
             shooter.Fire();
             if (shootSound != null)
                 shootSound.Play();

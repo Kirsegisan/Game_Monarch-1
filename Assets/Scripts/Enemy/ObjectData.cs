@@ -4,23 +4,30 @@ using UnityEngine;
 
 public class ObjectData : MonoBehaviour
 {
-    public int bullets = 100;
-    public bool infiniteAmmo = false;
-    public float currentHealth = 100;
-    public float maxHealth = 100;
-    public bool isDead = false;
+    [SerializeField] public int bullets = 100;
+    [SerializeField] public bool infiniteAmmo = true;
+    [SerializeField] public float currentHealth = 100;
+    [SerializeField] public float maxHealth = 100;
+    [SerializeField] private HealthBar healthBar;
 
     private void Update()
     {
         if ((currentHealth <= 0 || maxHealth <= 0))
         {
-            isDead = true;
-            Destroy(gameObject);
+            Die();
         }
     }
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        //Debug.Log("damage: " + damage + "hp: " + currentHealth);
+        if (healthBar != null)
+        {
+            healthBar.UpdateHealthBar();
+        }
+    }
+    
+    protected virtual void Die()
+    {
+        Destroy(gameObject);
     }
 }

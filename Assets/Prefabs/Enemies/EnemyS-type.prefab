@@ -393,6 +393,8 @@ MonoBehaviour:
   maxDamage: 10
   damageFalloff: 1
   fireRate: 1
+  ammoUse: 1
+  playerData: {fileID: 0}
 --- !u!114 &1613559471096708165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,8 +428,7 @@ MonoBehaviour:
   infiniteAmmo: 1
   currentHealth: 80
   maxHealth: 80
-  isDead: 0
-  isPlayer: 0
+  healthBar: {fileID: 1613559471096708165}
 --- !u!1 &5603425000173613450
 GameObject:
   m_ObjectHideFlags: 0

@@ -51,8 +51,8 @@ MonoBehaviour:
   maxDistance: 100
   maxDamage: 15
   damageFalloff: 1
-  fireRate: 1
-  ammoUse: 1
+  fireRate: 2
+  ammoUse: 2
   playerData: {fileID: 11400000, guid: 37747a04e539e8440b0169687d3fd552, type: 2}
 --- !u!1 &7841063062753738766
 GameObject:

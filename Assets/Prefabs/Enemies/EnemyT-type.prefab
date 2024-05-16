@@ -413,8 +413,7 @@ MonoBehaviour:
   infiniteAmmo: 1
   currentHealth: 31
   maxHealth: 31
-  isDead: 0
-  isPlayer: 0
+  healthBar: {fileID: 1613559471096708165}
 --- !u!1 &5603425000173613450
 GameObject:
   m_ObjectHideFlags: 0

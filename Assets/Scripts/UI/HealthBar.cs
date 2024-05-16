@@ -16,12 +16,7 @@ public class HealthBar : MonoBehaviour
         UpdateHealthBar();
     }
 
-    private void Update()
-    {
-        UpdateHealthBar();
-    }
-
-    void UpdateHealthBar()
+    public void UpdateHealthBar()
     {
         if (objectData)
         {
