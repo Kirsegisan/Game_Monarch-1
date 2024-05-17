@@ -95,7 +95,7 @@ public class TutorialScene : MonoBehaviour
         {
             if (healingStation.restorationsAmount == 0)
             {
-                Debug.Log("Speech6");
+                Debug.Log("Speech5");
                 StartCoroutine(PlayTutorialAudioClips(tutorialAudioClipsN6, OnTutorialEnd));
             }
         }
