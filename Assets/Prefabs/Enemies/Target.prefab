@@ -133,8 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullets: 100
   infiniteAmmo: 1
-  currentHealth: 10
-  maxHealth: 10
+  currentHealth: 21
+  maxHealth: 21
   healthBar: {fileID: 0}
   animator: {fileID: 5554253107624339457}
   isActive: 0

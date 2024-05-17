@@ -35,6 +35,9 @@ public class TutorialScene : MonoBehaviour
     [SerializeField] private GameObject roomButton;
     [SerializeField] private GameObject batya;
     [SerializeField] private PlayerData playerData;
+    [SerializeField] private HealsDisplay healsDisplay;
+    [SerializeField] private AmmoDisplay ammoDisplay;
+    [SerializeField] private VoiceAssistant voiceAssistant;
 
     public bool tutorialStarted = false;
     public bool gunPicked = false;
@@ -47,6 +50,7 @@ public class TutorialScene : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         weaponToTake.SetActive(false);
+        voiceAssistant.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -136,7 +140,11 @@ public class TutorialScene : MonoBehaviour
     {
         roomButton.SetActive(true);
         batya.SetActive(true);
+        voiceAssistant.gameObject.SetActive(true);
         playerData.ammo = 200;
+        playerData.heals = playerData.maxHeals;
+        healsDisplay.UpdateHealsDisplay();
+        ammoDisplay.UpdateAmmoDisplay();
     }
 
 }

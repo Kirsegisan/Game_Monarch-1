@@ -10,10 +10,10 @@ public class AmmoDisplay : MonoBehaviour
 
     private void Start()
     {
-        UpdateAmmoText();
+        UpdateAmmoDisplay();
     }
 
-    public void UpdateAmmoText()
+    public void UpdateAmmoDisplay()
     {
         if (playerData != null && ammoText != null)
         {

@@ -27,14 +27,18 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private PlayerData playerData;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private AmmoDisplay ammoDisplay;
+    [SerializeField] private HealsDisplay healsDisplay;
 
     private int activeHealCount = 0;
 
     private void Start()
     {
         playerData.health = playerData.maxHealth;
-        healthBar.UpdateHealthBar();
+        playerData.heals = playerData.maxHeals;
         playerData.ammo = startAmmo;
+        healthBar.UpdateHealthBar();
+        healsDisplay.UpdateHealsDisplay();
+        ammoDisplay.UpdateAmmoDisplay();
         handAnimator = GetComponent<Animator>();
         shootSound = GetComponent<AudioSource>();
         fireRate = shooter.fireRate;
@@ -66,20 +70,16 @@ public class PlayerShooting : MonoBehaviour
             //gameObject.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.H) && canHealing && activeHealCount <= 0)
+        if (Input.GetKeyDown(KeyCode.H) && canHealing && playerData.heals >= 1)
         {
+            playerData.heals -= 1;
+            healsDisplay.UpdateHealsDisplay();
             StartCoroutine(HealOverTime());
         }
-        else if (Input.GetKeyDown(KeyCode.H) && canHealing && activeHealCount > 0)
-        {
-            //StopCoroutine(HealOverTime());
-            StartCoroutine(HealOverTime());
-        }
-
         if (isAutoFiring && Time.time >= nextFireTime && Input.GetButton("Fire1"))
         {
             voiceAssistant.LowAmmo(0);
-            ammoDisplay.UpdateAmmoText();
+            ammoDisplay.UpdateAmmoDisplay();
             shooter.Fire();
             if (shootSound != null && playerData.ammo - shooter.ammoUse >= 0)
             {
